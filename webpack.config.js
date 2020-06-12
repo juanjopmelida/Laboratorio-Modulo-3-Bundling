@@ -6,9 +6,12 @@ const basePath = __dirname;
 
 module.exports = {
     context: path.join(basePath, 'src'),
+    resolve: {
+        extensions: [".js", ".jsx"]
+    },
     entry: {
-        app: "./index.js",
-        appStyles: ['./mystyles.scss']
+        app: "./index.jsx",
+        appStyles: ['./mystyles.scss', './averageComponentStyle.scss']
     },
     output: {
         filename: "[name].[chunkhash].js",
@@ -17,7 +20,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
@@ -39,6 +42,15 @@ module.exports = {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 use: [ MiniCssExtractPlugin.loader, "css-loader" ] 
+            },
+            {
+                test: /\.(png|jpg)$/,
+                exclude: /node_modules/,
+                loader: "url-loader?limit=5000"
+            }, 
+            {
+                test: /\.html$/,
+                loader: "html-loader"
             }
         ]
     },

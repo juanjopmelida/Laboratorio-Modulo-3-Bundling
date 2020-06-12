@@ -23,8 +23,10 @@
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "sass": "^1.26.8",
@@ -35,6 +37,10 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "rimraf": "^3.0.2"
+    "file-loader": "^6.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "url-loader": "^4.1.0"
   }
 }
