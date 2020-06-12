@@ -11,7 +11,7 @@ module.exports = {
     },
     entry: {
         app: "./index.jsx",
-        appStyles: ['./mystyles.scss', './averageComponentStyle.scss']
+        appStyles: ['./mystyles.scss', './averageComponentStyles.scss', './totalScoreComponentStyles.scss']
     },
     output: {
         filename: "[name].[chunkhash].js",
@@ -29,7 +29,15 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader",
+                    {
+                        loader:"css-loader",
+                        options: {
+                            modules: {
+                                localIdentName: "[name]__[local]__[hash:base64:5]"
+                            },
+                            localsConvention: "camelCase"
+                        }
+                    },
                     {
                         loader: "sass-loader",
                         options: {
