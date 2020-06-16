@@ -1,11 +1,15 @@
 {
-  "name": "Laboratorio-Modulo-3-Bundling",
+  "name": "laboratorio-modulo-3-bundling",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "rimraf dist && webpack --mode development",
+    "start": "run-p -l type-check:watch start:dev",
+    "start:dev": "webpack-dev-server --open --config webpack.dev.js",
+    "type-check": "tsc -noemit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build:dev": "rimraf dist && webpack --config webpack.dev.js",
+    "build:prod": "rimraf dist && webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,18 +29,22 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "@babel/preset-typescript": "^7.10.1",
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "npm-run-all": "^4.1.5",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "file-loader": "^6.0.0",

@@ -7,10 +7,10 @@ const basePath = __dirname;
 module.exports = {
     context: path.join(basePath, 'src'),
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".ts", ".tsx"]
     },
     entry: {
-        app: "./index.jsx",
+        app: "./index.tsx",
         appStyles: ['./mystyles.scss', './averageComponentStyles.scss', './totalScoreComponentStyles.scss']
     },
     output: {
@@ -20,7 +20,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
