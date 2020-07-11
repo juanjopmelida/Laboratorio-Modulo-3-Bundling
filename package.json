@@ -6,10 +6,12 @@
   "scripts": {
     "start": "run-p -l type-check:watch start:dev",
     "start:dev": "webpack-dev-server --open --config webpack.dev.js",
+    "start:prod": "webpack-dev-server --open --config webpack.prod.js",
     "type-check": "tsc -noemit",
     "type-check:watch": "npm run type-check -- --watch",
     "build:dev": "rimraf dist && webpack --config webpack.dev.js",
     "build:prod": "rimraf dist && webpack --config webpack.prod.js",
+    "build:perf": "rimraf dist && webpack --config webpack.perf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -47,10 +49,12 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "dotenv-webpack": "^1.8.0",
     "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rimraf": "^3.0.2",
-    "url-loader": "^4.1.0"
+    "url-loader": "^4.1.0",
+    "webpack-bundle-analyzer": "^3.8.0"
   }
 }
