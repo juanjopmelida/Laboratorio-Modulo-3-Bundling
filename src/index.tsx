@@ -1,13 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { AverageComponent } from "./averageComponent";
-import { TotalScoreComponent } from "./totalScoreComponent";
+import { JokeComponent } from "./jokeComponent";
 
 ReactDOM.render(
   <div>
     <h1>Hello world from React DOM</h1>
-    <AverageComponent />
-    <TotalScoreComponent />
+    <JokeComponent />
   </div>,
   document.getElementById("root"),
 );
