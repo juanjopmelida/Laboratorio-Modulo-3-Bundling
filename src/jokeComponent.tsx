@@ -2,11 +2,12 @@ import React from "react";
 const classes = require("./jokeComponentStyles.scss");
 
 export const JokeComponent = () => {
-  const [joke, setJoke] = React.useState([]);
+  const [Joke, setJoke] = React.useState({
+    setup: "",
+    punchline: "",
+  });
 
-  interface joke {
-    id: number;
-    type: string;
+  interface Joke {
     setup: string;
     punchline: string;
   }
@@ -30,11 +31,22 @@ export const JokeComponent = () => {
       });
   }, []);
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      showPunchline();
+    }, 2000);
+  }, [Joke]);
+
+  const showPunchline = () => {
+    const parr = document.createElement("h1");
+    parr.innerHTML = Joke.punchline;
+    document.getElementById("joke-container").appendChild(parr);
+  };
+
   return (
-    <div>
+    <div id="joke-container" className="joke-background">
       <h1>Hi, I´m the Joke Component</h1>
-      <span>{joke.setup}</span>
-      <span>...{joke.punchline}</span>
+      <span>{Joke.setup}</span>
     </div>
   );
 };
