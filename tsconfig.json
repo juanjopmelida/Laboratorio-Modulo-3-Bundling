@@ -6,7 +6,7 @@
     "declaration": false,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
-    "sourceMap":true,
+    "sourceMap": true,
     "jsx": "react",
     "noLib": false,
     "suppressImplicitAnyIndexErrors": true,
@@ -14,4 +14,6 @@
     "esModuleInterop": true,
     "baseUrl": "./src/"
   },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

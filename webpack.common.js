@@ -1,14 +1,16 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const loader = require("sass-loader");
 
 const basePath = __dirname;
 
 module.exports = {
   context: path.join(basePath, "src"),
   resolve: {
-    extensions: [".js", ".ts", ".tsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
+  stats: "errors-only",
   entry: {
     app: "./index.tsx",
     appStyles: ["./mystyles.scss", "./jokeComponentStyles.scss"],
@@ -28,15 +30,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                localIdentName: "[name]__[local]__[hash:base64:5]",
-              },
-              localsConvention: "camelCase",
-            },
-          },
+          "css-loader",
           {
             loader: "sass-loader",
             options: {
@@ -44,11 +38,6 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|jpg)$/,
