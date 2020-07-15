@@ -30,7 +30,7 @@ export const JokeComponent = () => {
       )
         .then((response) => response.json())
         .then((json) => setJoke(json))
-        .then(() => showImage())
+        .then(() => setTimeout(() => showImage(), 1500))
         .catch((err) => {
           console.log(err);
         }),
@@ -40,8 +40,7 @@ export const JokeComponent = () => {
   React.useEffect(() => {
     setTimeout(() => {
       showPunchline();
-    }, 2000);
-    ;
+    }, 3000);
   }, [Joke]);
 
   const showPunchline = () => {
