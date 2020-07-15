@@ -1,5 +1,6 @@
 import React from "react";
-const imgLogo = require("./content/logo_2.png");
+import { trackPromise } from "react-promise-tracker";
+const imgLogo = require("./content/thinking.gif").default;
 const classes = require("./jokeComponentStyles.scss");
 
 export const JokeComponent = () => {
@@ -14,33 +15,34 @@ export const JokeComponent = () => {
   }
 
   React.useEffect(() => {
-    fetch(
-      "https://cors-anywhere.herokuapp.com/https://joke-api-strict-cors.appspot.com/jokes/random",
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "matchilling-chuck-norris-jokes-v1.p.rapidapi.com",
-          "x-rapidapi-key": "SIGN-UP-FOR-KEY",
-          accept: "application/json",
+    trackPromise(
+      fetch(
+        "https://cors-anywhere.herokuapp.com/https://joke-api-strict-cors.appspot.com/jokes/random",
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host":
+              "matchilling-chuck-norris-jokes-v1.p.rapidapi.com",
+            "x-rapidapi-key": "SIGN-UP-FOR-KEY",
+            accept: "application/json",
+          },
         },
-      },
-    )
-      .then((response) => response.json())
-      .then((json) => setJoke(json))
-      .catch((err) => {
-        console.log(err);
-      });
+      )
+        .then((response) => response.json())
+        .then((json) => setJoke(json))
+        .then(() => showImage())
+        .catch((err) => {
+          console.log(err);
+        }),
+    );
   }, []);
 
   React.useEffect(() => {
     setTimeout(() => {
       showPunchline();
     }, 2000);
+    ;
   }, [Joke]);
-
-  React.useEffect(() => {
-    showImage();
-  }, []);
 
   const showPunchline = () => {
     const parr = document.createElement("h1");
@@ -56,7 +58,7 @@ export const JokeComponent = () => {
 
   return (
     <div id="joke-container">
-      <h1 className="joke-background">{Joke.setup}</h1>
+      <h1 className={classes.jokeBackground}>{Joke.setup}</h1>
     </div>
   );
 };

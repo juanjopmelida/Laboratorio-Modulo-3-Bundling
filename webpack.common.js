@@ -14,6 +14,7 @@ module.exports = {
   entry: {
     app: "./index.tsx",
     appStyles: ["./mystyles.scss", "./jokeComponentStyles.scss"],
+    vendorStyles: ["../node_modules/bootstrap/dist/css/bootstrap.css"],
   },
   output: {
     filename: "[name].[chunkhash].js",
@@ -27,10 +28,17 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]__[hash:base64:5]",
+              },
+              localsConvention: "camelCase",
+            },
+          },
           {
             loader: "sass-loader",
             options: {
@@ -40,7 +48,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
         exclude: /node_modules/,
         loader: "url-loader?limit=5000",
       },

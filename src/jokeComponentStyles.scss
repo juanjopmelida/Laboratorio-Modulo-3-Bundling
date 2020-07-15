@@ -1,10 +1,7 @@
-$background: rgb(49, 77, 77);
-$font-color: rgb(243, 160, 160);
+$background: rgb(83, 35, 128);
+$font-color: rgb(228, 224, 224);
 
 .joke-background {
   background: $background;
-}
-
-#joke-container {
-  background-color: yellow;
+  color: $font-color;
 }
