@@ -1,7 +1,8 @@
-$background: rgb(83, 35, 128);
-$font-color: rgb(228, 224, 224);
+@mixin random-colors() {
+  background: rgb(random(255), random(255), random(255));
+  color: rgb(random(255), random(255), random(255));
+}
 
 .joke-background {
-  background: $background;
-  color: $font-color;
+  @include random-colors();
 }

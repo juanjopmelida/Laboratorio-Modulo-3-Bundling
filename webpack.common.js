@@ -13,7 +13,7 @@ module.exports = {
   stats: "errors-only",
   entry: {
     app: "./index.tsx",
-    appStyles: ["./mystyles.scss", "./jokeComponentStyles.scss"],
+    appStyles: ["./myStyles.scss", "./jokeComponentStyles.scss"],
     vendorStyles: ["../node_modules/bootstrap/dist/css/bootstrap.css"],
   },
   output: {
