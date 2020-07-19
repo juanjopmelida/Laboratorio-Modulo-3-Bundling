@@ -1,6 +1,6 @@
 import React from "react";
 import { trackPromise } from "react-promise-tracker";
-const imgLogo = require("./content/thinking.gif").default;
+const imgThinking = require("./content/thinking.gif").default;
 const classes = require("./jokeComponentStyles.scss");
 
 export const JokeComponent = () => {
@@ -51,7 +51,7 @@ export const JokeComponent = () => {
 
   const showImage = () => {
     const img = document.createElement("img");
-    img.src = imgLogo;
+    img.src = imgThinking;
     document.getElementById("joke-container").appendChild(img);
   };
 
