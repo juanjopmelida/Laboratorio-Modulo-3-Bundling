@@ -1,7 +1,7 @@
 import React from "react";
 import { trackPromise } from "react-promise-tracker";
 const imgThinking = require("./content/thinking.gif").default;
-const classes = require("./jokeComponentStyles.scss");
+const classes = require("./scss/jokeComponentStyles.scss");
 
 export const JokeComponent = () => {
   const [Joke, setJoke] = React.useState({
